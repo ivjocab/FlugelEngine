@@ -5,20 +5,19 @@
 
 #include "Module.h"
 #include "SDL/include/SDL.h"
+#include <stdlib.h>
 
 class Application;
 
-class imGUI : public Module
+class ModuleImgui : public Module
 {
 public:
 
-	imGUI(Application* app, bool start_enabled = true);
-
-	// Destructor
-	virtual ~imGUI();
+	ModuleImgui(Application* app, bool start_enabled = true);
+	virtual ~ModuleImgui();
 
 	bool Init();
-	bool Update();
+	update_status Update(float dt);
 	bool CleanUp();
 
 public:

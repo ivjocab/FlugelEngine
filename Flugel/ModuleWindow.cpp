@@ -42,10 +42,8 @@ bool ModuleWindow::Init()
 	return ret;
 }
 
-bool ModuleWindow::Update()
+update_status ModuleWindow::Update(float dt)
 {
-
-
     /* Render here */
     glClear(GL_COLOR_BUFFER_BIT);
 

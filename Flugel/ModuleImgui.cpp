@@ -2,13 +2,24 @@
 
 #include "Application.h"
 
+#include "glew/include/GL/glew.h"
+
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
 #include "glfw/include/GLFW/glfw3.h"
 
-bool imGUI::Init()
+ModuleInput::ModuleInput(Application* app, bool start_enabled) : Module(app, start_enabled)
+{
+}
+
+// Destructor
+ModuleInput::~ModuleInput()
+{
+}
+
+bool ModuleImgui::Init()
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -20,7 +31,7 @@ bool imGUI::Init()
 	return true;
 }
 
-bool imGUI::Update()
+update_status ModuleImgui::Update(float dt)
 {
 	glfwPollEvents();
 
@@ -56,10 +67,10 @@ bool imGUI::Update()
         ImGui::End();
     }
 
-	return false;
+	return UPDATE_CONTINUE;
 }
 
-bool imGUI::CleanUp()
+bool ModuleImgui::CleanUp()
 {
 	return false;
 }

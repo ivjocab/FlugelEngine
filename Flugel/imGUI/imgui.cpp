@@ -19336,30 +19336,3 @@ void ImGui::UpdateDebugToolStackQueries() {}
 //-----------------------------------------------------------------------------
 
 #endif // #ifndef IMGUI_DISABLE
-
-imGUI::imGUI(Application* app, bool start_enabled)
-{
-}
-
-imGUI::~imGUI()
-{
-}
-
-bool imGUI::Init()
-{
-    return false;
-}
-
-bool imGUI::Update()
-{
-    return false;
-}
-
-bool imGUI::CleanUp()
-{
-    return false;
-}
-
-void imGUI::SetTitle(const char* title)
-{
-}

@@ -16,9 +16,6 @@
     <Filter Include="Sources\Helpers">
       <UniqueIdentifier>{121f8e6b-df36-4ab0-be0d-601ddfc9e503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Modules\Game">
-      <UniqueIdentifier>{83f46af7-e02f-40c0-9e56-41d76082527b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\Tools\imgui">
       <UniqueIdentifier>{9cef3e6a-eafb-4827-b143-70cbaba104ca}</UniqueIdentifier>
     </Filter>
@@ -27,29 +24,14 @@
     <ClInclude Include="Module.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleAudio.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleCamera3D.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleInput.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleRenderer3D.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleWindow.h">
       <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="p2DynArray.h">
-      <Filter>Sources\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="p2List.h">
-      <Filter>Sources\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="p2Point.h">
-      <Filter>Sources\Containers</Filter>
     </ClInclude>
     <ClInclude Include="glmath.h">
       <Filter>Sources\Containers</Filter>
@@ -60,40 +42,16 @@
     <ClInclude Include="Globals.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="Primitive.h">
-      <Filter>Sources\Helpers</Filter>
-    </ClInclude>
     <ClInclude Include="Color.h">
       <Filter>Sources\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="Light.h">
-      <Filter>Sources\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneIntro.h">
-      <Filter>Sources\Modules\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Sources\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePhysics3D.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysBody3D.h">
-      <Filter>Sources\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysVehicle3D.h">
-      <Filter>Sources\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePlayer.h">
-      <Filter>Sources\Modules\Game</Filter>
     </ClInclude>
     <ClInclude Include="imGUI\imconfig.h">
       <Filter>Sources\Tools\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imGUI\imgui.h">
-      <Filter>Sources\Tools\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imGUI\imgui_impl_opengl2.h">
       <Filter>Sources\Tools\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imGUI\imgui_internal.h">
@@ -111,18 +69,18 @@
     <ClInclude Include="ModuleImgui.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="imGUI\imgui_impl_opengl3.h">
+      <Filter>Sources\Tools\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imGUI\imgui_impl_opengl3_loader.h">
+      <Filter>Sources\Tools\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleCamera3D.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleInput.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleRenderer3D.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWindow.cpp">
@@ -143,29 +101,8 @@
     <ClCompile Include="glmath.cpp">
       <Filter>Sources\Containers</Filter>
     </ClCompile>
-    <ClCompile Include="Primitive.cpp">
-      <Filter>Sources\Helpers</Filter>
-    </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>Sources\Containers</Filter>
-    </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>Sources\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneIntro.cpp">
-      <Filter>Sources\Modules\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePhysics3D.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysBody3D.cpp">
-      <Filter>Sources\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysVehicle3D.cpp">
-      <Filter>Sources\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePlayer.cpp">
-      <Filter>Sources\Modules\Game</Filter>
     </ClCompile>
     <ClCompile Include="imGUI\imgui.cpp">
       <Filter>Sources\Tools\imgui</Filter>
@@ -176,9 +113,6 @@
     <ClCompile Include="imGUI\imgui_draw.cpp">
       <Filter>Sources\Tools\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="imGUI\imgui_impl_opengl2.cpp">
-      <Filter>Sources\Tools\imgui</Filter>
-    </ClCompile>
     <ClCompile Include="imGUI\imgui_tables.cpp">
       <Filter>Sources\Tools\imgui</Filter>
     </ClCompile>
@@ -187,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="ModuleImgui.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="imGUI\imgui_impl_opengl3.cpp">
+      <Filter>Sources\Tools\imgui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
