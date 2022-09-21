@@ -3,12 +3,14 @@
 #include "Application.h"
 
 #include "glew/include/GL/glew.h"
+#include "glfw/include/GLFW/glfw3.h"
+#include <gl/GL.h>
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-#include "glfw/include/GLFW/glfw3.h"
+
 
 ModuleInput::ModuleInput(Application* app, bool start_enabled) : Module(app, start_enabled)
 {

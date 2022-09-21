@@ -2,8 +2,8 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 
-#include "glfw/include/GLFW/glfw3.h"
 #include "glew/include/GL/glew.h"
+#include "glfw/include/GLFW/glfw3.h"
 
 ModuleWindow::ModuleWindow(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -52,6 +52,8 @@ update_status ModuleWindow::Update(float dt)
 
     /* Poll for and process events */
     glfwPollEvents();
+
+    return UPDATE_CONTINUE;
 }
 
 // Called before quitting

@@ -4,8 +4,6 @@
 #define __imGUI_H__
 
 #include "Module.h"
-#include "SDL/include/SDL.h"
-#include <stdlib.h>
 
 class Application;
 
