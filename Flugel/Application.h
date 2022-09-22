@@ -5,6 +5,7 @@ using namespace std;
 #include "Timer.h"
 #include "Module.h"
 #include "ModuleWindow.h"
+#include "ModuleImgui.h"
 #include "ModuleInput.h"
 #include "ModuleCamera3D.h"
 #include <list>
@@ -16,6 +17,7 @@ public:
 	ModuleWindow* window;
 	ModuleInput* input;
 	ModuleCamera3D* camera;
+	ModuleImgui* imgui;
 
 private:
 

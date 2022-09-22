@@ -3,7 +3,10 @@
 #include "ModuleWindow.h"
 
 #include "glew/include/GL/glew.h"
+#include "glew/include/GL/wglew.h"
 #include "glfw/include/GLFW/glfw3.h"
+
+#include <gl/GL.h>
 
 ModuleWindow::ModuleWindow(Application* app, bool start_enabled) : Module(app, start_enabled)
 {

@@ -3,6 +3,7 @@
 Application::Application()
 {
 	window = new ModuleWindow(this);
+	imgui = new ModuleImgui(this);
 	input = new ModuleInput(this);
 	camera = new ModuleCamera3D(this);
 
@@ -12,6 +13,7 @@ Application::Application()
 
 	// Main Modules
 	AddModule(window);
+	AddModule(imgui);
 	AddModule(input);
 	AddModule(camera);
 }
