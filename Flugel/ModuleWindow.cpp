@@ -2,8 +2,6 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 
-#include "glew/include/GL/glew.h"
-#include "glew/include/GL/wglew.h"
 #include "glfw/include/GLFW/glfw3.h"
 
 #include <gl/GL.h>

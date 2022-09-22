@@ -2,8 +2,6 @@
 
 #include "Application.h"
 
-#include "glew/include/GL/glew.h"
-#include "glfw/include/GLFW/glfw3.h"
 #include <gl/GL.h>
 
 #include "imgui.h"
@@ -11,6 +9,7 @@
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_opengl3_loader.h"
 #include "imgui_impl_sdl.h"
+#include <GLFW/glfw3.h>
 
 
 

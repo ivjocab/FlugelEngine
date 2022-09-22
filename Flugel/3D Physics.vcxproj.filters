@@ -78,6 +78,9 @@
     <ClInclude Include="imGUI\imgui_impl_sdl.h">
       <Filter>Sources\Tools\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="imGUI\imgui_impl_glfw.h">
+      <Filter>Sources\Tools\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -129,6 +132,9 @@
       <Filter>Sources\Tools\imgui</Filter>
     </ClCompile>
     <ClCompile Include="imGUI\imgui_impl_sdl.cpp">
+      <Filter>Sources\Tools\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imGUI\imgui_impl_glfw.cpp">
       <Filter>Sources\Tools\imgui</Filter>
     </ClCompile>
   </ItemGroup>
