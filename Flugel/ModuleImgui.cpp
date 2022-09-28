@@ -6,7 +6,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-#include <glew/include/GL/glew.h>
+#include <glew.h>
 #include <GLFW/glfw3.h>
 
 ModuleInput::ModuleInput(Application* app, bool start_enabled) : Module(app, start_enabled)
