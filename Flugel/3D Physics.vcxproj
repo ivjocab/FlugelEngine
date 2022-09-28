@@ -48,13 +48,13 @@
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>glfw/include;SDL/include;imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>glew/GL;glfw/include;SDL/include;imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>glu32.lib;opengl32.lib;glfw3.lib;glew32.lib;sdl2.lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>opengl32.lib;glfw3.lib;glew32.lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -84,6 +84,9 @@
     <ClInclude Include="imGUI\imgui_impl_opengl3.h" />
     <ClInclude Include="imGUI\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="imGUI\imgui_impl_sdl.h" />
+    <ClInclude Include="MathGeoLib\MathBuildConfig.h" />
+    <ClInclude Include="MathGeoLib\MathGeoLib.h" />
+    <ClInclude Include="MathGeoLib\MathGeoLibFwd.h" />
     <ClInclude Include="ModuleImgui.h" />
     <ClInclude Include="imGUI\imconfig.h" />
     <ClInclude Include="imGUI\imgui.h" />
@@ -95,6 +98,9 @@
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="pcg_extras.hpp" />
+    <ClInclude Include="pcg_random.hpp" />
+    <ClInclude Include="pcg_uint128.hpp" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>

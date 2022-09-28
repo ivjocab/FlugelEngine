@@ -19,6 +19,12 @@
     <Filter Include="Sources\Tools\imgui">
       <UniqueIdentifier>{9cef3e6a-eafb-4827-b143-70cbaba104ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tools\Math">
+      <UniqueIdentifier>{31ae99c4-3643-40b3-9bab-adc61d09265d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Tools\Math\Random">
+      <UniqueIdentifier>{ffe9adc3-5595-45da-a50d-66ab94670489}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -72,13 +78,31 @@
     <ClInclude Include="imGUI\imgui_impl_opengl3.h">
       <Filter>Sources\Tools\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="imGUI\imgui_impl_opengl3_loader.h">
-      <Filter>Sources\Tools\imgui</Filter>
-    </ClInclude>
     <ClInclude Include="imGUI\imgui_impl_sdl.h">
       <Filter>Sources\Tools\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imGUI\imgui_impl_glfw.h">
+      <Filter>Sources\Tools\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="pcg_extras.hpp">
+      <Filter>Sources\Tools\Math\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="pcg_random.hpp">
+      <Filter>Sources\Tools\Math\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="pcg_uint128.hpp">
+      <Filter>Sources\Tools\Math\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\MathBuildConfig.h">
+      <Filter>Sources\Tools\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\MathGeoLib.h">
+      <Filter>Sources\Tools\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\MathGeoLibFwd.h">
+      <Filter>Sources\Tools\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="imGUI\imgui_impl_opengl3_loader.h">
       <Filter>Sources\Tools\imgui</Filter>
     </ClInclude>
   </ItemGroup>
