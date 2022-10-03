@@ -7,7 +7,7 @@
 #include <ModuleInput.h>
 #include <ModuleRenderer3D.h>
 #include <ModuleCamera3D.h>
-//#include <ModuleEngineUI.h>
+#include <EngineUI/EngineUI.h>
 //#include <ModuleEventSystem.h>
 
 #include<list>
@@ -20,7 +20,7 @@ public:
 	ModuleInput* input;
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
-	//ModuleEngineUI* engine_ui = &e_engine_ui;
+	EngineUI* engine_ui = &e_engine_ui;
 	//ModuleEventSystem* events;
 
 private:

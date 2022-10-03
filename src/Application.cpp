@@ -23,7 +23,7 @@ Application::Application()
 	AddModule(renderer3D);
 
 	// UI Even further last!
-	//AddModule(this->engine_ui);
+	AddModule(this->engine_ui);
 
 	//AddModule(events);
 }

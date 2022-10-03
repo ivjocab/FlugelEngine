@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Helpers">
       <UniqueIdentifier>{7b9d10ca-c0f7-4aee-8266-03028c6be3f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules\EngineUI">
+      <UniqueIdentifier>{3915e95d-f526-4081-a391-9c91c9159eab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp">
@@ -89,6 +92,15 @@
     </ClCompile>
     <ClCompile Include="src\ModuleRenderer3D.cpp">
       <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EngineUI\EngineUI.cpp">
+      <Filter>Source Files\Modules\EngineUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EngineUI\ui_item.cpp">
+      <Filter>Source Files\Modules\EngineUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EngineUI\MenuBar.cpp">
+      <Filter>Source Files\Modules\EngineUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -439,6 +451,18 @@
     </ClInclude>
     <ClInclude Include="src\ModuleRenderer3D.h">
       <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EngineUI\EngineUI.h">
+      <Filter>Source Files\Modules\EngineUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EngineUI\ui_item.h">
+      <Filter>Source Files\Modules\EngineUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EngineUI\MenuBar.h">
+      <Filter>Source Files\Modules\EngineUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EngineUI\DemoWindow.h">
+      <Filter>Source Files\Modules\EngineUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -98,6 +98,15 @@
     <ClCompile Include="ExtLibraries\ImGui\imgui_tables.cpp" />
     <ClCompile Include="ExtLibraries\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\EngineUI\EngineUI.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EngineUI\MenuBar.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\EngineUI\ui_item.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\Helpers\glmath.cpp" />
     <ClCompile Include="src\Helpers\Timer.cpp" />
     <ClCompile Include="src\Main.cpp">
@@ -217,6 +226,18 @@
     <ClInclude Include="ExtLibraries\SDL\include\SDL_video.h" />
     <ClInclude Include="ExtLibraries\SDL\include\SDL_vulkan.h" />
     <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\EngineUI\DemoWindow.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\EngineUI\EngineUI.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\EngineUI\MenuBar.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\EngineUI\ui_item.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="src\Globals.h" />
     <ClInclude Include="src\Helpers\glmath.h" />
     <ClInclude Include="src\Helpers\Timer.h" />
