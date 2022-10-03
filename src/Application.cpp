@@ -61,7 +61,7 @@ bool Application::Init()
 	}
 
 	// After all Init calls we call Start() in all modules
-	LOG("Application Start --------------");
+	//LOG("Application Start --------------");
 
 	for (Module* item : list_modules) {
 		item->Start();
@@ -81,7 +81,6 @@ void Application::PrepareUpdate()
 // ---------------------------------------------
 void Application::FinishUpdate()
 {
-	//Do here object move?
 
 }
 

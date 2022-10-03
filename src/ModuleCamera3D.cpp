@@ -2,95 +2,155 @@
 #include <Application.h>
 #include "ModuleCamera3D.h"
 
-#include "SDL/include/SDL.h"
-
-ModuleWindow::ModuleWindow(bool start_enabled) : Module(start_enabled)
+ModuleCamera3D::ModuleCamera3D(bool start_enabled) : Module(start_enabled)
 {
-	window = NULL;
-	screen_surface = NULL;
+	CalculateViewMatrix();
+
+	X = vec3(1.0f, 0.0f, 0.0f);
+	Y = vec3(0.0f, 1.0f, 0.0f);
+	Z = vec3(0.0f, 0.0f, 1.0f);
+
+	Position = vec3(0.0f, 0.0f, 5.0f);
+	Reference = vec3(0.0f, 0.0f, 0.0f);
 }
 
-// Destructor
-ModuleWindow::~ModuleWindow()
-{
-}
+ModuleCamera3D::~ModuleCamera3D()
+{}
 
-// Called before render is available
-bool ModuleWindow::Init()
+// -----------------------------------------------------------------
+bool ModuleCamera3D::Start()
 {
-	LOG("Init SDL window & surface");
+	//LOG("Setting up the camera");
 	bool ret = true;
-
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		LOG("SDL_VIDEO could not initialize! SDL_Error: %s\n", SDL_GetError());
-		ret = false;
-	}
-	else
-	{
-		//Create window
-		int width = SCREEN_WIDTH * SCREEN_SIZE;
-		int height = SCREEN_HEIGHT * SCREEN_SIZE;
-		Uint32 flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
-
-		//Use OpenGL 3.1
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-
-		if (WIN_FULLSCREEN == true)
-		{
-			flags |= SDL_WINDOW_FULLSCREEN;
-		}
-
-		if (WIN_RESIZABLE == true)
-		{
-			flags |= SDL_WINDOW_RESIZABLE;
-		}
-
-		if (WIN_BORDERLESS == true)
-		{
-			flags |= SDL_WINDOW_BORDERLESS;
-		}
-
-		if (WIN_FULLSCREEN_DESKTOP == true)
-		{
-			flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-		}
-
-		window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
-
-		if (window == NULL)
-		{
-			LOG("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-			ret = false;
-		}
-		else
-		{
-			//Get window surface
-			screen_surface = SDL_GetWindowSurface(window);
-		}
-	}
 
 	return ret;
 }
 
-// Called before quitting
-bool ModuleWindow::CleanUp()
+// -----------------------------------------------------------------
+bool ModuleCamera3D::CleanUp()
 {
-	LOG("Destroying SDL window and quitting all SDL systems");
+	/*LOG("Cleaning camera");*/
 
-	//Destroy window
-	if (window != NULL)
-	{
-		SDL_DestroyWindow(window);
-	}
-
-	//Quit SDL subsystems
-	SDL_Quit();
 	return true;
 }
 
-void ModuleWindow::SetTitle(const char* title)
+// -----------------------------------------------------------------
+update_status ModuleCamera3D::Update(float dt)
 {
-	SDL_SetWindowTitle(window, title);
+	// Implement a debug camera with keys and mouse
+	// Now we can make this movememnt frame rate independant!
+
+	vec3 newPos(0, 0, 0);
+	float speed = 3.0f * dt;
+	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
+		speed = 8.0f * dt;
+
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
+
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
+	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
+
+
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
+
+	Position += newPos;
+	Reference += newPos;
+
+	// Mouse motion ----------------
+
+	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
+	{
+		int dx = -App->input->GetMouseXMotion();
+		int dy = -App->input->GetMouseYMotion();
+
+		float Sensitivity = 0.25f;
+
+		Position -= Reference;
+
+		if (dx != 0)
+		{
+			float DeltaX = (float)dx * Sensitivity;
+
+			X = rotate(X, DeltaX, vec3(0.0f, 1.0f, 0.0f));
+			Y = rotate(Y, DeltaX, vec3(0.0f, 1.0f, 0.0f));
+			Z = rotate(Z, DeltaX, vec3(0.0f, 1.0f, 0.0f));
+		}
+
+		if (dy != 0)
+		{
+			float DeltaY = (float)dy * Sensitivity;
+
+			Y = rotate(Y, DeltaY, X);
+			Z = rotate(Z, DeltaY, X);
+
+			if (Y.y < 0.0f)
+			{
+				Z = vec3(0.0f, Z.y > 0.0f ? 1.0f : -1.0f, 0.0f);
+				Y = cross(Z, X);
+			}
+		}
+
+		Position = Reference + Z * length(Position);
+	}
+
+	// Recalculate matrix -------------
+	CalculateViewMatrix();
+
+	return UPDATE_CONTINUE;
+}
+
+// -----------------------------------------------------------------
+void ModuleCamera3D::Look(const vec3& Position, const vec3& Reference, bool RotateAroundReference)
+{
+	this->Position = Position;
+	this->Reference = Reference;
+
+	Z = normalize(Position - Reference);
+	X = normalize(cross(vec3(0.0f, 1.0f, 0.0f), Z));
+	Y = cross(Z, X);
+
+	if (!RotateAroundReference)
+	{
+		this->Reference = this->Position;
+		this->Position += Z * 0.05f;
+	}
+
+	CalculateViewMatrix();
+}
+
+// -----------------------------------------------------------------
+void ModuleCamera3D::LookAt(const vec3& Spot)
+{
+	Reference = Spot;
+
+	Z = normalize(Position - Reference);
+	X = normalize(cross(vec3(0.0f, 1.0f, 0.0f), Z));
+	Y = cross(Z, X);
+
+	CalculateViewMatrix();
+}
+
+
+// -----------------------------------------------------------------
+void ModuleCamera3D::Move(const vec3& Movement)
+{
+	Position += Movement;
+	Reference += Movement;
+
+	CalculateViewMatrix();
+}
+
+// -----------------------------------------------------------------
+float* ModuleCamera3D::GetViewMatrix()
+{
+	return &ViewMatrix;
+}
+
+// -----------------------------------------------------------------
+void ModuleCamera3D::CalculateViewMatrix()
+{
+	ViewMatrix = mat4x4(X.x, Y.x, Z.x, 0.0f, X.y, Y.y, Z.y, 0.0f, X.z, Y.z, Z.z, 0.0f, -dot(X, Position), -dot(Y, Position), -dot(Z, Position), 1.0f);
+	ViewMatrixInverse = inverse(ViewMatrix);
 }
