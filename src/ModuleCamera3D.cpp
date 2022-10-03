@@ -1,6 +1,8 @@
 #include <Helpers/Globals.h>
 #include <Application.h>
-#include "ModuleWindow.h"
+#include "ModuleCamera3D.h"
+
+#include "SDL/include/SDL.h"
 
 ModuleWindow::ModuleWindow(bool start_enabled) : Module(start_enabled)
 {

@@ -2,6 +2,12 @@
 #include <Application.h>
 #include "ModuleWindow.h"
 
+#include "SDL/include/SDL.h"
+
+#include "ImGui/imgui.h"
+#include "glew/include/GL/glew.h"
+#include "GLFW/include/glfw3.h"
+
 ModuleWindow::ModuleWindow(bool start_enabled) : Module(start_enabled)
 {
 	window = NULL;
