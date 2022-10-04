@@ -18,7 +18,7 @@
 #pragma once
 
 #include "AABB.h"
-#include "OBB.h"
+#include "AABB.h"
 #include "Ray.h"
 #include "../Math/assume.h"
 #include "../Math/MathFunc.h"

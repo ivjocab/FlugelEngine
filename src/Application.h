@@ -8,7 +8,7 @@
 #include <ModuleRenderer3D.h>
 #include <ModuleCamera3D.h>
 #include <EngineUI/EngineUI.h>
-//#include <ModuleEventSystem.h>
+#include <EventSystem/ModuleEventSystem.h>
 
 #include<list>
 #include<vector>
@@ -21,7 +21,7 @@ public:
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
 	EngineUI* engine_ui = &e_engine_ui;
-	//ModuleEventSystem* events;
+	ModuleEventSystem* events;
 
 private:
 
@@ -35,8 +35,12 @@ public:
 	~Application();
 
 	bool Init();
+	void SendEvents(std::vector<std::shared_ptr<Event>>& evt_vec);
 	update_status Update();
 	bool CleanUp();
+
+	void Save(JSON_Object* root_node);
+	void Load(JSON_Object* root_node);
 
 private:
 

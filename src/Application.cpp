@@ -6,7 +6,7 @@ Application::Application()
 	input = new ModuleInput();
 	renderer3D = new ModuleRenderer3D();
 	camera = new ModuleCamera3D();
-	//events = new ModuleEventSystem();
+	events = new ModuleEventSystem();
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -24,8 +24,7 @@ Application::Application()
 
 	// UI Even further last!
 	AddModule(this->engine_ui);
-
-	//AddModule(events);
+	AddModule(events);
 }
 
 Application::~Application()
@@ -82,6 +81,27 @@ void Application::PrepareUpdate()
 void Application::FinishUpdate()
 {
 
+}
+
+void Application::SendEvents(std::vector<std::shared_ptr<Event>>& evt_vec) 
+{
+	// App can also react to certain events
+	for (std::shared_ptr<Event> evt : evt_vec) {
+		switch (evt->type) {
+		case EventType::SAVE_CONFIG:
+			Save(evt->json_object);
+			continue;
+		case EventType::LOAD_CONFIG:
+			Load(evt->json_object);
+			continue;
+		}
+	}
+
+	for (Module* item : list_modules) {
+		item->ReceiveEvents(evt_vec);
+	}
+
+	evt_vec.clear();
 }
 
 // Call PreUpdate, Update and PostUpdate on all modules

@@ -1,5 +1,8 @@
 #pragma once
 #include <Helpers/Globals.h>
+#include <vector>
+#include <memory>
+#include <EventSystem/Event.h>
 
 class Application;
 
@@ -43,8 +46,13 @@ public:
 		return UPDATE_CONTINUE;
 	}
 
+	virtual void ReceiveEvents(std::vector<std::shared_ptr<Event>>& evt_vec) {}
+
 	virtual bool CleanUp()
 	{
 		return true;
 	}
+
+	virtual void Save(JSON_Object* obj) {};
+	virtual void Load(JSON_Object* obj) {};
 };
