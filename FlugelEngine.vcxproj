@@ -92,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="ExtLibraries\ImGui\backends\imgui_impl_glfw.cpp" />
     <ClCompile Include="ExtLibraries\ImGui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="ExtLibraries\ImGui\backends\imgui_impl_sdl.cpp" />
     <ClCompile Include="ExtLibraries\ImGui\imgui.cpp" />
     <ClCompile Include="ExtLibraries\ImGui\imgui_demo.cpp" />
     <ClCompile Include="ExtLibraries\ImGui\imgui_draw.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="ExtLibraries\ImGui\backends\imgui_impl_glfw.h" />
     <ClInclude Include="ExtLibraries\ImGui\backends\imgui_impl_opengl3.h" />
     <ClInclude Include="ExtLibraries\ImGui\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="ExtLibraries\ImGui\backends\imgui_impl_sdl.h" />
     <ClInclude Include="ExtLibraries\ImGui\imconfig.h" />
     <ClInclude Include="ExtLibraries\ImGui\imgui.h" />
     <ClInclude Include="ExtLibraries\ImGui\imgui_internal.h" />

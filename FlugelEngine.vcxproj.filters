@@ -102,6 +102,9 @@
     <ClCompile Include="src\EngineUI\MenuBar.cpp">
       <Filter>Source Files\Modules\EngineUI</Filter>
     </ClCompile>
+    <ClCompile Include="ExtLibraries\ImGui\backends\imgui_impl_sdl.cpp">
+      <Filter>External Libraries\ImGUI\backends</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -463,6 +466,9 @@
     </ClInclude>
     <ClInclude Include="src\EngineUI\DemoWindow.h">
       <Filter>Source Files\Modules\EngineUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtLibraries\ImGui\backends\imgui_impl_sdl.h">
+      <Filter>External Libraries\ImGUI\backends</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
