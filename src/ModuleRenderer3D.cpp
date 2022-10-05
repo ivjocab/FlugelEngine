@@ -5,10 +5,8 @@
 #include <SDL/include/SDL_opengl.h>
 #include <GLFW/include/glfw3.h>
 #include <gl/GL.h>
-#include <gl/GLU.h>
 
-#pragma comment (lib, "glew32.lib")
-#pragma comment (lib, "glu32.lib")    /* link OpenGL Utility lib     */
+#pragma comment (lib, "glew32.lib")   /* link OpenGL Utility lib     */
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 
 #include <stdint.h>
@@ -155,7 +153,7 @@ double cum_dt = 0;
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
 	cum_dt += dt;
-	float4 light_position = { (float)sin(cum_dt) * 5.f, 0.f, (float)cos(cum_dt) * 5.f, .5f };
+	glm::vec4 light_position = { (float)sin(cum_dt) * 5.f, 0.f, (float)cos(cum_dt) * 5.f, .5f };
 	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat mat_shininess[] = { 50.0 };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
@@ -163,7 +161,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	glEnable(GL_LIGHT0);
 
 	glLightfv(GL_LIGHT0, GL_POSITION, (float*)&light_position);
-	float4 neg_lp = float4(-light_position.xyz(), 1.);
+	glm::vec4 neg_lp = glm::vec4(-light_position.x, -light_position.y, -light_position.z, 1.);
 	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, (float*)&neg_lp);
 
 	glPointSize(10.);
@@ -199,6 +197,31 @@ bool ModuleRenderer3D::CleanUp()
 	return true;
 }
 
+void ModuleRenderer3D::ReceiveEvents(std::vector<std::shared_ptr<Event>>& evt_vec)
+{
+	for (std::shared_ptr<Event> ev : evt_vec) {
+		switch (ev->type) {
+		case EventType::WINDOW_RESIZE:
+			OnResize(ev->point2d.x, ev->point2d.y);
+			continue;
+		case EventType::CHANGED_DEFAULT_OPENGL_STATE:
+			default_state = ev->ogl_state;
+			SetOpenGLState(default_state);
+			continue;
+		case EventType::TOGGLE_RENDERER_PRIMITIVES:
+			draw_example_primitive = ev->boolean;
+			continue;
+		case EventType::CHANGE_RENDERER_PRIMITIVE:
+			example_fun = ev->uint32;
+			continue;
+		//case EventType::LOAD_MESH_TO_GPU:
+		//	const PlainData& pdata = App->fs->RetrieveData(ev->uint64);
+		//	const NIMesh* mesh = (const NIMesh*)pdata.data;
+		//	LoadMesh(mesh);
+		}
+	}
+}
+
 #define GRID_SIZE 10
 
 void ModuleRenderer3D::RenderGrid() const
@@ -231,17 +254,17 @@ void ModuleRenderer3D::LoadMesh(const NIMesh* mesh)
 	push.num_vtx = mesh->vertices.size();
 	glGenBuffers(1, &push.vtx_id);
 	glBindBuffer(GL_ARRAY_BUFFER, push.vtx_id);
-	glBufferData(GL_ARRAY_BUFFER, push.num_vtx * sizeof(float3), mesh->vertices.data(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, push.num_vtx * sizeof(glm::vec3), mesh->vertices.data(), GL_STATIC_DRAW);
 
 	if (mesh->normals.size() > 0) {
 		glGenBuffers(1, &push.norm_id);
 		glBindBuffer(GL_ARRAY_BUFFER, push.norm_id);
-		glBufferData(GL_ARRAY_BUFFER, mesh->normals.size() * sizeof(float3), mesh->normals.data(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, mesh->normals.size() * sizeof(glm::vec3), mesh->normals.data(), GL_STATIC_DRAW);
 	}
 	if (mesh->uvs.size() > 0) {
 		glGenBuffers(1, &push.uvs_id);
 		glBindBuffer(GL_ARRAY_BUFFER, push.uvs_id);
-		glBufferData(GL_ARRAY_BUFFER, mesh->uvs.size() * sizeof(float2), mesh->uvs.data(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, mesh->uvs.size() * sizeof(glm::vec2), mesh->uvs.data(), GL_STATIC_DRAW);
 	}
 	if (mesh->indices.size() > 0) {
 		push.num_idx = mesh->indices.size();

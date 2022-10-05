@@ -103,9 +103,9 @@ void DDCube()
 	glEnd();
 }
 
-#include <MathGeo/MathGeoLib.h>
+#include <GLM.hpp>
 
-float3 vertices[] = {
+glm::vec3 vertices[] = {
 	{-1., -1., -1.}, {1., -1., -1.},
 	{-1., 1., -1.}, {1., 1., -1.},
 	{-1., -1., 1.}, {1., -1., 1.},
@@ -121,9 +121,9 @@ int indices[] = {
 	2,4,8,	2,8,6
 };
 
-#define GLVertexDD(idx) {float3& v = vertices[*idx - 1]; glVertex3f(v.x, v.y, v.z);}
+#define GLVertexDD(idx) {glm::vec3& v = vertices[*idx - 1]; glVertex3f(v.x, v.y, v.z);}
 
-float3 colors[] = {
+glm::vec3 colors[] = {
 	{1., 1., 0.}, {1., 0., 1.}, {0., 1., 1.},
 	{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}
 };

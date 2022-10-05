@@ -51,5 +51,4 @@ public:
 		// vec.push_back(ev);
 		event_vec.push_back(ev);
 	}
-
 };

@@ -1,23 +1,25 @@
 #include "Primitives.h"
-#include <MathGeo/MathGeoLib.h>
+#include <GLM.hpp>
 #include <glew/include/GL/glew.h>
+#include <vector>
+#include <Helpers/Globals.h>
 
-std::vector<float3> raw_cube;
+std::vector<glm::vec3> raw_cube;
 uint32_t raw_cube_id;
-static float3 colors[] = {
+static glm::vec3 colors[] = {
 	{1., 1., 0.}, {1., 0., 1.}, {0., 1., 1.},
 	{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}
 };
 
 
-float3 cube_vertices[] = {
+glm::vec3 cube_vertices[] = {
 	{-1., -1., -1.}, {1., -1., -1.},
 	{-1., 1., -1.}, {1., 1., -1.},
 	{-1., -1., 1.}, {1., -1., 1.},
 	{-1., 1., 1.}, {1., 1., 1.}
 
 };
-constexpr int num_cube_vertices = sizeof(cube_vertices) / sizeof(float3);
+constexpr int num_cube_vertices = sizeof(cube_vertices) / sizeof(glm::vec3);
 int cube_indices[] = {
 	4,5,7,	4,7,6,
 	3,1,0,	0,2,3,
@@ -39,10 +41,10 @@ void VB_Cube() {
 }
 
 //=================================
-float3 pyramid_vertices[] = {
+glm::vec3 pyramid_vertices[] = {
 	{1., 1., 1.}, {1., -1., -1.}, {-1., 1., -1.}, {-1., -1., 1.}
 };
-constexpr int num_pyr_vertices = sizeof(pyramid_vertices) / sizeof(float3);
+constexpr int num_pyr_vertices = sizeof(pyramid_vertices) / sizeof(glm::vec3);
 uint32_t pyramid_indices[] = {
 	0,3,1,	0,1,2,
 	0,2,3,	3,2,1,
@@ -62,11 +64,11 @@ void VBI_Pyramid() {
 	glDisableClientState(GL_VERTEX_ARRAY);
 }
 //=================================
-std::vector<float3> disk_sphere_vertices;
+std::vector<glm::vec3> disk_sphere_vertices;
 uint32_t disk_sphere_vert_id;
-std::vector<float3> disk_sphere_normals;
+std::vector<glm::vec3> disk_sphere_normals;
 uint32_t disk_sphere_norm_id;
-std::vector<float2> disk_sphere_uvs;
+std::vector<glm::vec2> disk_sphere_uvs;
 uint32_t disk_sphere_uv_id;
 
 std::vector<uint32_t> disk_sphere_indices;
@@ -86,15 +88,15 @@ void GenDiskSphere(int h_divs, int w_divs) {
 	auto uv_it = disk_sphere_uvs.begin();
 	for (r = 0; r < h_divs; ++r) {
 		for (s = 0; s < w_divs; ++s) {
-			const float y = sin(-pi / 2. + pi * r * R);
-			const float x = cos(2. * pi * s * S) * sin(pi * r * R);
-			const float z = sin(2. * pi * s * S) * sin(pi * r * R);
+			const float y = sin( PI / 2. + PI * r * R);
+			const float x = cos(2. * PI * s * S) * sin(PI * r * R);
+			const float z = sin(2. * PI * s * S) * sin(PI * r * R);
 
-			*uv_it++ = float2(s * S, r * R);
+			*uv_it++ = glm::vec2(s * S, r * R);
 
-			*vert_it++ = float3(x, y, z) * radius;
+			*vert_it++ = glm::vec3(x, y, z) * radius;
 
-			*norm_it++ = float3(x, y, z);
+			*norm_it++ = glm::vec3(x, y, z);
 		}
 	}
 
@@ -111,11 +113,11 @@ void GenDiskSphere(int h_divs, int w_divs) {
 
 	glGenBuffers(1, &disk_sphere_vert_id);
 	glBindBuffer(GL_ARRAY_BUFFER, disk_sphere_vert_id);
-	glBufferData(GL_ARRAY_BUFFER, disk_sphere_vertices.size() * sizeof(float3), disk_sphere_vertices.data(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, disk_sphere_vertices.size() * sizeof(glm::vec3), disk_sphere_vertices.data(), GL_STATIC_DRAW);
 	
 	glGenBuffers(1, &disk_sphere_norm_id);
 	glBindBuffer(GL_ARRAY_BUFFER, disk_sphere_norm_id);
-	glBufferData(GL_ARRAY_BUFFER, disk_sphere_normals.size() * sizeof(float3), disk_sphere_normals.data(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, disk_sphere_normals.size() * sizeof(glm::vec3), disk_sphere_normals.data(), GL_STATIC_DRAW);
 	
 	//glGenBuffers(1, &disk_sphere_uv_id);
 	//glBindBuffer(GL_ARRAY_BUFFER, disk_sphere_uv_id);
@@ -153,7 +155,7 @@ void InitPrimitives() {
 	for (int i : cube_indices) raw_cube.push_back(cube_vertices[i]);
 	glGenBuffers(1, &raw_cube_id);
 	glBindBuffer(GL_ARRAY_BUFFER, raw_cube_id);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float3)* raw_cube.size(), raw_cube.data(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3)* raw_cube.size(), raw_cube.data(), GL_STATIC_DRAW);
 
 	glGenBuffers(1, &pyramid_vert_id);
 	glBindBuffer(GL_ARRAY_BUFFER, pyramid_vert_id);
