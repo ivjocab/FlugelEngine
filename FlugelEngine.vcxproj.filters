@@ -126,6 +126,9 @@
     <ClCompile Include="log.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="src\EngineUI\SettingsWindow.cpp">
+      <Filter>Source Files\Modules\EngineUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -505,6 +508,9 @@
     </ClInclude>
     <ClInclude Include="src\Helpers\Globals.h">
       <Filter>Source Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EngineUI\SettingsWindow.h">
+      <Filter>Source Files\Modules\EngineUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

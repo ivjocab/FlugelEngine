@@ -60,7 +60,7 @@ bool Application::Init()
 	}
 
 	// After all Init calls we call Start() in all modules
-	//LOG("Application Start --------------");
+	LOG("Application Start --------------");
 
 	for (Module* item : list_modules) {
 		item->Start();
@@ -86,16 +86,16 @@ void Application::FinishUpdate()
 void Application::SendEvents(std::vector<std::shared_ptr<Event>>& evt_vec) 
 {
 	// App can also react to certain events
-	//for (std::shared_ptr<Event> evt : evt_vec) {
-	//	switch (evt->type) {
-	//	case EventType::SAVE_CONFIG:
-	//		Save(evt->json_object);
-	//		continue;
-	//	case EventType::LOAD_CONFIG:
-	//		Load(evt->json_object);
-	//		continue;
-	//	}
-	//}
+	for (std::shared_ptr<Event> evt : evt_vec) {
+		switch (evt->type) {
+		case EventType::SAVE_CONFIG:
+			Save(evt->json_object);
+			continue;
+		case EventType::LOAD_CONFIG:
+			Load(evt->json_object);
+			continue;
+		}
+	}
 
 	for (Module* item : list_modules) {
 		item->ReceiveEvents(evt_vec);

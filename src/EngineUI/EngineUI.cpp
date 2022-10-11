@@ -25,9 +25,9 @@ void StartImGUI(Application* App) {
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
    /* io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad; */     // Enable Gamepad Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
-    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
-    io.ConfigViewportsNoAutoMerge = true;
-    io.ConfigViewportsNoTaskBarIcon = true;
+    //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+    //io.ConfigViewportsNoAutoMerge = true;
+    //io.ConfigViewportsNoTaskBarIcon = true;
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
@@ -112,18 +112,18 @@ bool EngineUI::CleanUp()
     return false;
 }
 
-//void EngineUI::ReceiveEvents(std::vector<std::shared_ptr<Event>>& evt_vec)
-//{
-//    for (UI_Item* item : items) {
-//        item->ReceiveEvents(evt_vec);
-//    }
-//}
+void EngineUI::ReceiveEvents(std::vector<std::shared_ptr<Event>>& evt_vec)
+{
+    for (UI_Item* item : items) {
+        item->ReceiveEvents(evt_vec);
+    }
+}
 
-//bool EngineUI::GetEvent(SDL_Event* e)
-//{
-//    ImGui_ImplSDL2_ProcessEvent(e);
-//    return true;
-//}
+bool EngineUI::GetEvent(SDL_Event* e)
+{
+    ImGui_ImplSDL2_ProcessEvent(e);
+    return true;
+}
 
 void EngineUI::EngineUI_RegisterItem(UI_Item* item)
 {

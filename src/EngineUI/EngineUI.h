@@ -23,9 +23,9 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
-	//void ReceiveEvents(std::vector<std::shared_ptr<Event>>& evt_vec);
+	void ReceiveEvents(std::vector<std::shared_ptr<Event>>& evt_vec);
 
-	//bool GetEvent(SDL_Event* e);
+	bool GetEvent(SDL_Event* e);
 
 	void EngineUI_RegisterItem(UI_Item* item);
 	void EngineUI_RequireUpdate(bool window_state)

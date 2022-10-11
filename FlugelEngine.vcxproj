@@ -106,6 +106,7 @@
     <ClCompile Include="src\EngineUI\MenuBar.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\EngineUI\SettingsWindow.cpp" />
     <ClCompile Include="src\EngineUI\ui_item.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -242,6 +243,7 @@
     <ClInclude Include="src\EngineUI\MenuBar.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="src\EngineUI\SettingsWindow.h" />
     <ClInclude Include="src\EngineUI\ui_item.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
