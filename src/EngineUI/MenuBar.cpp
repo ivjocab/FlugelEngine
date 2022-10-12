@@ -32,6 +32,31 @@ void MenuBar::Update()
     // Should a main menu register and be a class/struct by itself or should it be standalone
     if (ImGui::BeginMenu("File"))
     {
+        if (ImGui::Button("New"))
+        {
+
+        }
+
+        if (ImGui::Button("Open"))
+        {
+
+        }
+
+        if (ImGui::Button("Save project"))
+        {
+
+        }
+
+        if (ImGui::Button("Load project"))
+        {
+
+        }
+
+        if (ImGui::Button("Exit"))
+        {
+            App->window->CleanUp();
+        }
+
         ImGui::EndMenu();
     }
 
@@ -47,8 +72,17 @@ void MenuBar::Update()
 
     if (ImGui::BeginMenu("Help"))
     {
-        //if (ImGui::MenuItem("About"))
-        //    about->SwitchActive();
+        if (ImGui::BeginMenu("About"))
+        {
+            ImGui::Text("This is Flugel Engine, a C++ based games engine made for a video games engines course.");
+            if (ImGui::BeginPopup("About FE"))
+            {
+                ImGui::TextDisabled("This is Flugel Engine, a C++ based games engine made for a video games engines course.");
+                ImGui::EndPopup;
+            }
+     
+            ImGui::EndMenu();
+        }
 
         ImGui::EndMenu();
     }
