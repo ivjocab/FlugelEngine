@@ -5,10 +5,11 @@
 #include <gl/GL.h>
 #include "ui_item.h"
 #include "MenuBar.h"
+#include "SettingsWindow.h"
 
 EngineUI e_engine_ui(true);
 
-EngineUI::EngineUI(bool start_enabled) : Module(start_enabled)
+EngineUI::EngineUI(bool start_enabled) : Module("engineUI", start_enabled)
 {
 
 }

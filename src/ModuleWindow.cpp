@@ -8,7 +8,7 @@
 #include "glew/include/GL/glew.h"
 #include "GLFW/include/glfw3.h"
 
-ModuleWindow::ModuleWindow(bool start_enabled) : Module(start_enabled)
+ModuleWindow::ModuleWindow(bool start_enabled) : Module("window", start_enabled)
 {
 	window = NULL;
 	screen_surface = NULL;

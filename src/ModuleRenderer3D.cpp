@@ -28,7 +28,7 @@ void SetOpenGLState(const OpenGLState& state) {
 	glPolygonMode(state.poly_mode, state.poly_fill);
 }
 
-ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module(start_enabled)
+ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module("renderer3D", start_enabled)
 {
 	grid_state.lighting = false;
 	default_state.src_blend = GL_SRC_ALPHA;
@@ -84,7 +84,6 @@ bool ModuleRenderer3D::Init()
 		GLenum error = glGetError();
 		if(error != GL_NO_ERROR)
 		{
-			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
 			ret = false;
 		}
 
@@ -96,7 +95,7 @@ bool ModuleRenderer3D::Init()
 		error = glGetError();
 		if(error != GL_NO_ERROR)
 		{
-			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
+			/*LOG("Error initializing OpenGL! %s\n", gluErrorString(error));*/
 			ret = false;
 		}
 		
@@ -110,7 +109,7 @@ bool ModuleRenderer3D::Init()
 		error = glGetError();
 		if(error != GL_NO_ERROR)
 		{
-			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
+			/*LOG("Error initializing OpenGL! %s\n", gluErrorString(error));*/
 			ret = false;
 		}
 		
@@ -226,7 +225,7 @@ void ModuleRenderer3D::ReceiveEvents(std::vector<std::shared_ptr<Event>>& evt_ve
 
 void ModuleRenderer3D::RenderGrid() const
 {
-	 glDisable(GL_LIGHTING);
+	//glDisable(GL_LIGHTING);
 	SetOpenGLState(grid_state);
 
 	for (int i = 0; i < GRID_SIZE * 2 + 1; i++)
@@ -245,7 +244,7 @@ void ModuleRenderer3D::RenderGrid() const
 	}
 
 	SetOpenGLState(default_state);
-	glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHTING);
 }
 
 void ModuleRenderer3D::LoadMesh(const NIMesh* mesh)

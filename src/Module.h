@@ -13,9 +13,10 @@ private:
 	bool enabled;
 
 public:
+	const char* name = "nameX";
 
 	Module() {}
-	Module(bool start_enabled = true)
+	Module(const char* _name, bool start_enabled = true) : name(_name)
 	{}
 
 	virtual ~Module()
